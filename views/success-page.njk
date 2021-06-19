@@ -1,0 +1,23 @@
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+
+{% extends "layout.html" %}
+
+{% block  content %}
+
+<h1 class="govuk-heading-l">Congratulation !!!</h1>
+
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    Your input has been accepted.
+    <a class="govuk-notification-banner__link" href="/data-entry">Submit another one</a>.
+  </p>
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: 'success'
+}) }}
+
+
+{% endblock %}

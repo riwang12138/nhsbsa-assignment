@@ -1,0 +1,31 @@
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+{% if error_msg  %}
+
+{% set inputBox = {
+  label: {
+    "text": 'Data entry'
+  },
+  id: "input",
+  name: "input",
+    errorMessage: {
+    "text": error_msg
+  }
+}  %}
+
+
+{% else %}
+
+{% set inputBox = {
+  label: {
+    "text": 'Data entry'
+  },
+  id: "input",
+  name: "input"
+}  %}
+{% endif %}
+
+
+{{ govukInput(inputBox) }}

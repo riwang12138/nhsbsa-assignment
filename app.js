@@ -1,7 +1,8 @@
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const httpErrors = require('http-errors');
-const logger = require('morgan');const nunjucks = require('nunjucks');
+const logger = require('morgan');
+const nunjucks = require('nunjucks');
 
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
@@ -13,7 +14,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 // view engine setup
 app.set('view engine', 'njk');
-nunjucks.configure('views', {
+nunjucks.configure(['node_modules/govuk-frontend/', 'views'], {
   autoescape: true,
   express: app
 });
@@ -42,6 +43,11 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // render the not found page
+  // if(res.status == 404){
+  // res.render('not-found');
+  // return;
+  // }
   // render the error page
   res.status(err.status || 500);
   res.render('error');
