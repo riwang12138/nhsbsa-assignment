@@ -1,0 +1,67 @@
+iac
+nhsbsa-ci
+cert.pem
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+log/*-audit.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directories used by tools like istanbul/nyc
+coverage/
+.nyc_output/
+coverage.lcov
+
+# Quick Invoke Test items
+Events
+variables.json
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+
+# intellij
+.idea/
+.DS_Store
+
+# eclipse
+.project
+.settings/
+
+# visual studio code
+.history/
+launch.json
+
+# browser tests
+test/screenshots
+
+# ci build files
+bin
+build
+
+# local definition of acceptance tests
+/local_acceptance_tests.properties
+
+# Acceptance and Smoke Test Reports
+src2/documentation/gh-pages/acceptance-report.html
+src2/documentation/gh-pages/smoke-report.html
+
+# assets build directories
+src2/web/public/styles/
