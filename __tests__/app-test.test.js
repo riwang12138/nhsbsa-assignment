@@ -3,9 +3,7 @@ const app = require('../app');
 
 describe('app error hanlder', () => {
   it('it should handle 404 error', (done) => {
-    request(app)
-      .get('/notExist')
-      .expect(404, done);
+    request(app).get('/notExist').expect(404, done);
   });
 });
 
@@ -29,8 +27,7 @@ describe('Post to the /data-entry path should follow the PRG pattern', () => {
   });
 
   it('Should redirect page back with status 303 with input longer than 10 characters', (done) => {
-    request(app).post('/data-entry').send({ input: '0123456789a' }).expect('location', '/data-entry')
-      .expect(303, done);
+    request(app).post('/data-entry').send({ input: '0123456789a' }).expect('location', '/data-entry').expect(303, done);
   });
 
   it('Should redirect to the success page with a valid input ', (done) => {
