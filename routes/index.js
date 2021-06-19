@@ -1,12 +1,15 @@
-const { Router } = require('express');
+const express = require('express');
 
-const router = Router();
+const router = express.Router();
+const dataEntry = require('./data-entry');
 
-/* GET index page. */
-router.get('/', (req, res) => {
-  res.render('data-entry', {
-    title: 'Express'
-  });
+const DATA_ENTRY_PATH = '/data-entry';
+
+router.use('/', [dataEntry]);
+
+/* Redirect to data entry page default */
+router.get('/', (_, res) => {
+  res.redirect(DATA_ENTRY_PATH);
 });
 
 module.exports = router;

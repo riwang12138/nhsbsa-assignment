@@ -3,16 +3,31 @@ const express = require('express');
 const httpErrors = require('http-errors');
 const logger = require('morgan');
 const nunjucks = require('nunjucks');
-
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
+const session = require('express-session');
+const flash = require('express-flash');
 
 const indexRouter = require('./routes/index');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
+// Enable flash to send message to frontend
+const sessionStore = new session.MemoryStore();
+app.use(cookieParser());
+app.use(
+  session({
+    cookie: { maxAge: 60000 },
+    store: sessionStore,
+    saveUninitialized: true,
+    resave: 'true',
+    secret: 'secret',
+  }),
+);
+app.use(flash());
+
 // view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'njk');
 nunjucks.configure(['node_modules/govuk-frontend/', 'views'], {
   autoescape: true,
@@ -43,11 +58,6 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the not found page
-  // if(res.status == 404){
-  // res.render('not-found');
-  // return;
-  // }
   // render the error page
   res.status(err.status || 500);
   res.render('error');
