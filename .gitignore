@@ -53,7 +53,6 @@ launch.json
 test/screenshots
 
 # ci build files
-bin
 build
 
 # local definition of acceptance tests

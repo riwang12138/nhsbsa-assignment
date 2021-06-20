@@ -8,13 +8,16 @@ const path = require('path');
 const session = require('express-session');
 const flash = require('express-flash');
 const favicon = require('serve-favicon');
+const MemoryStore = require('memorystore')(session);
 
 const indexRouter = require('./routes/index');
 
 const app = express();
 
 // Enable flash to send message to frontend
-const sessionStore = new session.MemoryStore();
+const sessionStore =  new MemoryStore({
+  checkPeriod: 60000 // prune expired entrie
+});
 app.use(cookieParser());
 app.use(
   session({

@@ -10,7 +10,9 @@ Choose Nunjucks as the template view engine and imported the
 public asset, CSS, Javascript from [https://design-system.service.gov.uk]
 
 ## Input validation 
-The application runs on endpoint [localhose:3000/](http://localhost:3000/data-entry)
+The application run locally [localhose:3000/](http://localhost:3000/data-entry)
+or heroku platform  http://nhsbsa-assignment.herokuapp.com/
+
 Input form can accpet up to 10 maximum characters.
  
 ## Quick start
