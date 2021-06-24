@@ -15,8 +15,8 @@ const indexRouter = require('./routes/index');
 const app = express();
 
 // Enable flash to send message to frontend
-const sessionStore =  new MemoryStore({
-  checkPeriod: 60000 // prune expired entrie
+const sessionStore = new MemoryStore({
+  checkPeriod: 60000, // prune expired entrie
 });
 app.use(cookieParser());
 app.use(
